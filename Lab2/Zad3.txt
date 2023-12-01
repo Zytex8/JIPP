@@ -1,0 +1,25 @@
+% 1. Zapytanie: Wypisz wszystkie przeloty odbędące się we wtorek
+lot(NrLotu, MiejscePoczatkowe, MiejsceDocelowe, GodzinaWylotu, GodzinaPrzylotu, Dni) :-
+    NrLotu,
+    MiejscePoczatkowe,
+    MiejsceDocelowe,
+    GodzinaWylotu,
+    GodzinaPrzylotu,
+    Dni = day(_, _, _, _, _, 1, _). % Lot dostępny we wtorek
+
+% 2. Zapytanie: Godziny przelotów na trasie Rzeszów-Warszawa
+godziny_przelotow(Rzeszow, Warszawa, GodzinaWylotu, GodzinaPrzylotu, Dni) :-
+    lot(_, Rzeszow, Warszawa, GodzinaWylotu, GodzinaPrzylotu, Dni).
+
+% 3. Zapytanie: Na jakiej trasie operuje lot o numerze a2324?
+trasa_lotu(NrLotu, MiejscePoczatkowe, MiejsceDocelowe) :-
+    lot(NrLotu, MiejscePoczatkowe, MiejsceDocelowe, _, _, _).
+
+% 4. Zapytanie: Dni, w jakie kursuje samolot z Berlina do Warszawy
+dni_kursowania(Berlin, Warszawa, Dni) :-
+    lot(_, Berlin, Warszawa, _, _, Dni).
+
+% 5. Zapytanie: Samoloty lądujące na lotnisku w Warszawie w określonych godzinach
+samoloty_ladujace_w_godzinach(Warszawa, GodzinaLadowania, NrLotu, MiejscePoczatkowe, MiejsceDocelowe) :-
+    lot(NrLotu, MiejscePoczatkowe, Warszawa, _, GodzinaLadowania, _),
+    (GodzinaLadowania >= 800, GodzinaLadowania =< 1000; GodzinaLadowania >= 1800).
