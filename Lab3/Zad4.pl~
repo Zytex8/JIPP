@@ -1,0 +1,8 @@
+%Baza wiedzy
+dlugosc(kontener1, 20).
+szerokosc(kontener1,30).
+wysokosc(kontener1, 15).
+dlugosc(kontener2, 25).
+szerokosc(kontener2,9).
+wysokosc(kontener2, 10).
+
